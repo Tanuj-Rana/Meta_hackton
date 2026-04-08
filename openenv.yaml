@@ -1,0 +1,6 @@
+spec_version: 1
+name: meta_hackathon_scaler
+type: space
+runtime: fastapi
+app: meta_grid_env.server.app:app
+port: 8000

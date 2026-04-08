@@ -11,10 +11,14 @@ requires-python = ">=3.11"
 dependencies = [
   "fastapi>=0.115.0",
   "httpx>=0.28.0",
+  "openenv-core>=0.2.0",
   "openai>=1.50.0",
   "pydantic>=2.9.0",
   "uvicorn>=0.30.0",
 ]
 
+[project.scripts]
+server = "server.app:main"
+
 [tool.setuptools]
-packages = ["meta_grid_env", "meta_grid_env.server"]
+packages = ["meta_grid_env", "meta_grid_env.server", "server"]

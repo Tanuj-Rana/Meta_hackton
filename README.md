@@ -1,3 +1,13 @@
+---
+title: Meta Hackaton
+emoji: ⚡
+colorFrom: yellow
+colorTo: blue
+sdk: docker
+pinned: false
+app_port: 8000
+---
+
 # Meta Hackathon Scaler
 
 `meta_hackathon_scaler` is a realistic smart-electricity dispatch simulator inspired by Indian city grid operations handled by DISCOMs and infrastructure companies like BHEL. The agent acts like a control-room operator who must keep demand and supply balanced during heat waves, outages, and festival peaks.

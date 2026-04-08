@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from fastapi import FastAPI
+from fastapi import Body, FastAPI
 
 from meta_grid_env.models import LoadBalancerObservation, ResetRequest, StateResponse, StepRequest
 from meta_grid_env.server.grid_environment import SmartGridEnvironment
@@ -15,6 +15,11 @@ async def health() -> dict[str, str]:
     return {"status": "healthy"}
 
 
+@app.get("/")
+async def root() -> dict[str, str]:
+    return {"name": "meta_hackathon_scaler", "status": "ok"}
+
+
 @app.get("/schema")
 async def schema() -> dict[str, object]:
     return {
@@ -25,8 +30,9 @@ async def schema() -> dict[str, object]:
 
 
 @app.post("/reset")
-async def reset(request: ResetRequest) -> dict[str, object]:
-    response = ENV.reset(task_name=request.task_name)
+async def reset(request: ResetRequest | None = Body(default=None)) -> dict[str, object]:
+    payload = request or ResetRequest()
+    response = ENV.reset(task_name=payload.task_name)
     return response.model_dump()
 
 
